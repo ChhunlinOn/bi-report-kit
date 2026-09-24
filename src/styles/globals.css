@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Root-level fallback for the same tokens, so Radix-portaled content
+ * (Select/Dialog/Tooltip render into document.body by default, outside
+ * the .brk-scope wrapper below) still resolves hsl(var(--brk-card)) etc.
+ * instead of getting an empty/transparent value. .brk-scope's own block
+ * below has equal specificity but comes later in source order, so it
+ * still wins for anything actually nested inside it \u2014 this is purely a
+ * fallback for portaled elements that land outside that DOM subtree.
+ * (Dark mode on a portaled dropdown/dialog will still reflect these light
+ * defaults, not the app's current .brk-dark state, since portaled content
+ * isn't a DOM descendant of .brk-scope either way.)
+ */
+:root {
+  --brk-background: 210 20% 98%;
+  --brk-foreground: 222 32% 15%;
+
+  --brk-card: 0 0% 100%;
+  --brk-card-foreground: 222 32% 15%;
+
+  --brk-primary: 189 74% 28%;
+  --brk-primary-foreground: 0 0% 100%;
+
+  --brk-secondary: 222 16% 94%;
+  --brk-secondary-foreground: 222 32% 15%;
+
+  --brk-muted: 222 16% 94%;
+  --brk-muted-foreground: 222 12% 44%;
+
+  --brk-accent: 262 46% 54%;
+  --brk-accent-foreground: 0 0% 100%;
+
+  --brk-destructive: 358 70% 49%;
+  --brk-destructive-foreground: 0 0% 100%;
+
+  --brk-border: 222 16% 88%;
+  --brk-input: 222 16% 88%;
+  --brk-ring: 189 74% 28%;
+
+  --brk-radius: 0.5rem;
+
+  --brk-chart-1: 189 70% 36%;
+  --brk-chart-2: 32 85% 54%;
+  --brk-chart-3: 262 46% 58%;
+  --brk-chart-4: 350 62% 55%;
+  --brk-chart-5: 222 18% 46%;
+}
+
+/*
+ * Design tokens for bi-report-kit.
+ * Everything is namespaced (--brk-*) so it never collides with a host
+ * app's own design tokens. Override any of these on a wrapping element
+ * (e.g. <div class="brk-scope" style="--brk-primary: ...">) to re-theme.
+ *
+ * Palette: an "analyst's desk" feel rather than generic SaaS \u2014 deep teal
+ * as the working accent (data, focus states), warm amber as the only
+ * "attention" color (deltas, alerts), violet reserved for a single
+ * secondary series. Ink is a dark slate, not flat black.
+ */
+.brk-scope {
+  --brk-background: 210 20% 98%;
+  --brk-foreground: 222 32% 15%;
+
+  --brk-card: 0 0% 100%;
+  --brk-card-foreground: 222 32% 15%;
+
+  --brk-primary: 189 74% 28%;
+  --brk-primary-foreground: 0 0% 100%;
+
+  --brk-secondary: 222 16% 94%;
+  --brk-secondary-foreground: 222 32% 15%;
+
+  --brk-muted: 222 16% 94%;
+  --brk-muted-foreground: 222 12% 44%;
+
+  --brk-accent: 262 46% 54%;
+  --brk-accent-foreground: 0 0% 100%;
+
+  --brk-destructive: 358 70% 49%;
+  --brk-destructive-foreground: 0 0% 100%;
+
+  --brk-border: 222 16% 88%;
+  --brk-input: 222 16% 88%;
+  --brk-ring: 189 74% 28%;
+
+  --brk-radius: 0.5rem;
+
+  --brk-chart-1: 189 70% 36%;
+  --brk-chart-2: 32 85% 54%;
+  --brk-chart-3: 262 46% 58%;
+  --brk-chart-4: 350 62% 55%;
+  --brk-chart-5: 222 18% 46%;
+}
+
+.dark.brk-scope,
+.brk-scope.brk-dark {
+  --brk-background: 222 28% 9%;
+  --brk-foreground: 210 20% 94%;
+
+  --brk-card: 222 26% 12%;
+  --brk-card-foreground: 210 20% 94%;
+
+  --brk-primary: 189 60% 46%;
+  --brk-primary-foreground: 222 28% 9%;
+
+  --brk-secondary: 222 20% 17%;
+  --brk-secondary-foreground: 210 20% 94%;
+
+  --brk-muted: 222 20% 17%;
+  --brk-muted-foreground: 216 12% 65%;
+
+  --brk-accent: 262 50% 66%;
+  --brk-accent-foreground: 222 28% 9%;
+
+  --brk-destructive: 358 70% 58%;
+  --brk-destructive-foreground: 210 20% 94%;
+
+  --brk-border: 222 20% 20%;
+  --brk-input: 222 20% 20%;
+  --brk-ring: 189 60% 46%;
+
+  --brk-chart-1: 189 60% 50%;
+  --brk-chart-2: 32 80% 60%;
+  --brk-chart-3: 262 55% 68%;
+  --brk-chart-4: 350 60% 62%;
+  --brk-chart-5: 216 14% 62%;
+}
+
+.brk-scope {
+  background-color: hsl(var(--brk-background));
+  color: hsl(var(--brk-foreground));
+}
